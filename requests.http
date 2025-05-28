@@ -1,0 +1,62 @@
+### Register User
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password123"
+}
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+ {
+     "email": "test@example.com",
+     "password": "password123"
+ }
+
+### Get User Profile (No Token)
+GET http://localhost:5000/api/user/profile
+
+### Get User Profile (With Valid Token)
+GET http://localhost:5000/api/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzJmM2NmNWQxOTNjMWZiNjNiNWZhYSIsImlhdCI6MTc0ODE3MDMxMiwiZXhwIjoxNzQ4MTczOTEyfQ.Zh9fKKl8KuV9I2Bci-lOr49s9auYvkHPgkwEv_9Dggg
+
+### Get All Users (No Token)
+GET http://localhost:5000/api/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzJmOTVhYjI2YWNjYjg0MzI2ODVmNiIsImlhdCI6MTc0ODE3MTI0NiwiZXhwIjoxNzQ4MTc0ODQ2fQ.OmjWMAsFoFFGJRHTqPa8PQxVyEzck34VlCirIOBzIyA
+### Get All Users (No Token)
+GET http://localhost:5000/api/admin/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzJmYTFkYjI2YWNjYjg0MzI2ODVmZiIsImlhdCI6MTc0ODE3MTI5MywiZXhwIjoxNzQ4MTc0ODkzfQ.S82tQBgzPCBaMrutBK2vqM4jhDOREGBxgzXrJTHt3BU
+### Change User Role (Admin Token)
+  PUT http://localhost:5000/api/admin/users/6832fa1db26accb8432685ff/role
+  Content-Type: application/json
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzJmOTVhYjI2YWNjYjg0MzI2ODVmNiIsImlhdCI6MTc0ODE3MTI0NiwiZXhwIjoxNzQ4MTc0ODQ2fQ.OmjWMAsFoFFGJRHTqPa8PQxVyEzck34VlCirIOBzIyA
+
+  {
+      "newRole": "moderator"
+  }
+
+### Create Article (requires authenticated user token)
+POST http://localhost:5000/api/articles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzJmYTFkYjI2YWNjYjg0MzI2ODVmZiIsImlhdCI6MTc0ODE5MjQ1NCwiZXhwIjoxNzQ4MTk2MDU0fQ.Vm_XwG_l0CN_2oXqiMiDMR8ovS5JEQAJy7A1ZaqehBI
+
+{
+    "title": "Мій перший пост",
+    "shortDescription": "Це короткий опис мого першого посту на сайті.",
+    "fullContent": "Тут знаходиться повний зміст мого першого посту. Він може бути досить довгим і цікавим. Можна додати ще багато інформації сюди."
+}
+
+### Get All Articles
+GET http://localhost:5000/api/articles
+
+### Get Popular Articles
+GET http://localhost:5000/api/articles/popular
+
+### Get Recent Articles
+GET http://localhost:5000/api/articles/recent
+
+### Get Article by ID
+GET http://localhost:5000/api/articles/68334cd4a52d52e6bb0d875e
+
